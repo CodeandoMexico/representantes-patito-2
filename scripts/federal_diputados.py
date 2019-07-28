@@ -64,10 +64,10 @@ df = percentile_list = pd.DataFrame(
     })
 
 
-# In[146]:
+# In[151]:
 
 
-df
+df.to_csv('sample_data/federal_diputados.csv')
 
 
 # In[ ]:
