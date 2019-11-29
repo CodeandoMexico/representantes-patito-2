@@ -6,82 +6,78 @@
 ` Has and belongs to` **[Asistencias](#Asistencias)**  
 ` Has and belongs to` **[Iniciativas](#Iniciativas)**
 
-  * cámara (a la que pertenece) [local, federal, senado]
-  * nombre
-  * apellido
-  * slug (nombre y apellido transliterado para búsquedas)
-  * distrito (`/^d[lf]-[1-3]{,1}\d-(\d{1,2}|rp|c[1-5])$/`)
-  * entidad (número)
-  * género (0, 1 -- masculino/femenino)
-  * partido
-  * correo
-  * imagen
-  * suplente
-  * elección [mayoría relativa, primera minoría, representación proporcional]
-  * curul
-  * cabecera
-  * teléfonos
-  * links (redes sociales, páginas)
-  * puestos (de comisiones)
-  * inasistencias
-  * votaciones
-  * revisiones
+  * cámara (a la que pertenece) [local, federal, senado] [ cadena ]
+  * nombre [ cadena ]
+  * apellido [ cadena ]
+  * slug (nombre y apellido transliterado para búsquedas) [ cadena ]
+  * distrito (`/^d[lf]-[1-3]{,1}\d-(\d{1,2}|rp|c[1-5])$/`) [ cadena ]
+  * entidad [ numerico ]
+  * género (0, 1 -- masculino/femenino) [ numerico ]
+  * partido [ cadena ]
+  * correo [ cadena ]
+  * imagen [ cadena ] || pdf: { url: [ cadena ] }
+  * suplente [ cadena ]
+  * elección [mayoría relativa, primera minoría, representación proporcional] [ numerico ]
+  * curul [ numerico ]
+  * cabecera [ cadena ]
+  * teléfonos [ cadena ]
+  * links (redes sociales, páginas) [ cadena ]
 
 # Legislaturas
 ` Has many ` **[Diputados](#Actor)**
 ` Has many ` **[Iniciativas](#Iniciativas)**
-  * Nombre
-  * No. de Legislatura
-  * No en romano
+  * nombre
+  * no_de_legislatura [ cadena ]
+  * mo_en_romano [ cadena ]
 
 # Periodos
 ` Belongs to ` **[Legislatura](#Legislaturas)**
-  * Legislatura
-  * Legislatura Id
-  * Actual
+  * Legislatura [ cadena ]
+  * Legislatura Id [ numerico ]
+  * Actual [ boolean ]
 
 # Periodos
 ` Belongs to ` **[Legislatura](#Legislaturas)**
- * Legislatura
- * Legislatura Id
- * Actual
+ * Legislatura [ numerico ]
+ * Legislatura Id [ numerico ]
+ * Actual [ boolean ]
 
 # Partidos
 ` Has many ` **[Diputados](#Actor)**
 ` Belongs to ` **[Legislatura](#Legislaturas)**
 ` Has and Belongs to ` **[Iniciativas](#Iniciativa)**
- * Nombre
- * Logo
- * Estatus
- * URL Web
- * Orden
- * Estatus
+ * nombre [ cadena ]
+ * logo [ cadena ] || pdf: { url: [ cadena ] }
+ * estatus [ boolean ]
+ * url_web [ cadena ]
+ * orden [ numerico ]
+ * estatus [ numerico ]
 
 # Asistencias
 ` Has and belongs to many ` **[Diputados](#Actor)**
 ` Has and belongs to many ` **[Asistencias Diputados](#Asistencias-diputados)**
 ` Belongs to ` **[Comision](#Comisiones)**
 ` Belongs to ` **[Legislatura](#Legislaturas)**
-  * Fecha
-  * Comision
-  * Legislatura
-  * Periodo
+  * fecha [ datetime ]
+  * comision [ numerico ]
+  * legislatura [ numerico ]
+  * periodo [ cadena ]
 
 # Asistencias-diputados
 ` Belongs to ` **[Diputado](#Actor)**
 ` Belongs to ` **[Asistencia](#Asistencias)**
-  * Diputado Id
-  * Asistencia Id
-  * Tipo de Asistencia
+  * diputado_id [ numerico ]
+  * asistencia_id [ numerico ]
+  * tipo_de_asistencia [ numerico ]
 
 # Dictamenes
 ` Has many ` **[Iniciativas](#Iniciativas)**
 ` Has many ` **[Votaciones](#Votaciones)**
 ` Belongs to ` **[Legislatura](#Legislaturas)**
-  * Titulo
-  * Fecha de presentacion
-  * Archivo
-  * Numero de publicacion (Periodico oficial)
+  * titulo [ cadena ]
+  * fecha_de_presentacion [ datetime ]
+  * archivo [ cadena ] || pdf: { url: [ cadena ] }
+  * numero_de_publicacion (Periodico oficial) [ cadena ]
 
 # Revision:
   * creada (fecha)
@@ -148,19 +144,19 @@
 
 
 # Cabilderos:
-  * rfc
-  * razon_social
-  * domicilio
-  * telefono
-  * correo_electronico
+  * rfc [ cadena ]
+  * razon_social [ cadena ]
+  * domicilio [ cadena ]
+  * telefono [ cadena ]
+  * correo_electronico [ cadena ]
   * personas_autorizadas (tratar como array)
-  * estatus_cabildero
+  * estatus_cabildero [ boolean ]
   * anexo_buno (tratar como text)
   * anexo_bdos (tratar como text)
-  * numero_acreditacion
-  * persona_fisica
-  * numero_cabildero
-  * fecha_acreditacion
+  * numero_acreditacion [ cadena ]
+  * persona_fisica [ cadena ]
+  * numero_cabildero [ numerico ]
+  * fecha_acreditacion [ datetime ]
   * organos_gobierno_comisiones
   * diputadas_diputados
   * diputados (arreglo con los datos de los diputados correspondientes)
@@ -169,16 +165,16 @@
   * colonia
 
 # Decretos
-    ` Belongs to` **[Dictamen](#Dictamenes)**
-    ` Belongs to` **[Iniciativa](#Iniciativas)**
-    ` Belongs to` **[Legislatura](#Legislaturas)**
-    ` Has many` **[Archivos](#Archivos)**
-    * titulo
-    * archivo
-    * archivo_de_publicacion
-    * descripcion
-    * fecha_publicacion
-    * no_publicacion
+ ` Belongs to` **[Dictamen](#Dictamenes)**
+ ` Belongs to` **[Iniciativa](#Iniciativas)**
+ ` Belongs to` **[Legislatura](#Legislaturas)**
+ ` Has many` **[Archivos](#Archivos)**
+   * titulo [ cadena ]
+   * archivo [ cadena ]
+   * archivo_de_publicacion [ cadena ] || pdf: { url: [ cadena ] }
+   * descripcion [ texto ]
+   * fecha_publicacion [ datetime ]
+   * no_publicacion [ cadena ] || pdf: { url: [ cadena ] }
 
 # Detalle-orden
  ` Belongs to` **[Orden](#Ordenes)**
@@ -214,7 +210,7 @@
       * comision
           * nombre
 # Ley:
-
+` Belongs to` **[Legislatura](#Legislaturas)**
   * id [ numerico ]
   * categoria_id [ numerico ]
   * created_at [ datetime ]
@@ -239,4 +235,3 @@
   * word_url [ cadena ] || word: { url: [ cadena ] }
   * publicacion_url [ cadena ] || publicacion: { url: [ cadena ] }
   * publicacion_info [ cadena ]
-
