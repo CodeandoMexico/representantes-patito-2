@@ -41,13 +41,13 @@ En [schema.md](https://github.com/CodeandoMexico/representantes-patito-2/blob/ma
 - [ ] Listado de Dictamenes en Pleno:
 `GET http://www.congresogto.gob.mx/dictamenes/dictamenes_api.json`
 
-- [ ] Listado de todas la Iniciativas (en revision):
+- [ ] Listado de todas la Iniciativas (en revisión):
 `GET http://www.congresogto.gob.mx/iniciativas/iniciativas_api.json`
 
-- [ ] Listado de Ordenes (en revision):
+- [ ] Listado de Ordenes (en revisión):
 `GET http://www.congresogto.gob.mx/ordenes/ordenes_api.json`
 
-- [ ] Detalle de la Orden/Reunion (en revision):
+- [ ] Detalle de la Orden/Reunion (en revisión):
 `GET http://www.congresogto.gob.mx/ordenes/780/orden_api.json`
 
 - [ ] Listado de Dictamenes en comisiones (en revisión):
@@ -59,7 +59,7 @@ En [schema.md](https://github.com/CodeandoMexico/representantes-patito-2/blob/ma
 - [x] Listado de Comisiones de la Legislatura Actual:
 `GET https://www.congresogto.gob.mx/comisiones/comisiones_api.json`
 
-- [x] Cabilderos Personas Fisicas:
+- [x] Cabilderos Personas Físicas:
 `GET http://www.congresogto.gob.mx/cabildero_fisicas/personas_fisicas_api.json`
 
 - [x] Cabilderos Personas Morales:
